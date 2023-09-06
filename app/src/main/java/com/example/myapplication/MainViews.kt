@@ -71,6 +71,7 @@ fun PreviewHeaderView(){
     HeaderView()
 }
 
+/**
 @Composable
 fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
     // Obtener el contexto local
@@ -104,7 +105,13 @@ fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
 
         // Botón para iniciar sesión
         Button(
-            onClick = { onLoginClick() },
+            onClick = {
+                // Crear un Intent para iniciar la nueva actividad
+                val intent = Intent(context, LoginActivity::class.java)
+
+                // Iniciar la nueva actividad
+                context.startActivity(intent)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
@@ -112,10 +119,19 @@ fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
             Text(text = "Log In")
         }
 
+
         // Botón para registrarse
         Button(
-            onClick = { onSignUpClick() },
-            modifier = Modifier.fillMaxWidth()
+            onClick = {
+                // Crear un Intent para iniciar la nueva actividad
+                val intent = Intent(context, RegisterActivity::class.java)
+
+                // Iniciar la nueva actividad
+                context.startActivity(intent)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp)
         ) {
             Text(text = "Sign Up")
         }
@@ -137,7 +153,7 @@ fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
     }
 
 
-
+**/
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -230,7 +246,7 @@ fun SignUpView(onSignUpClick: () -> Unit) {
             painter = painterResource(id = imageResId),
             contentDescription = null,
             modifier = Modifier
-                .size(450.dp)
+                .size(350.dp)
                 .padding(8.dp)
         )
         // Texto que muestra "Registrarse" con estilo de tipografía de MaterialTheme
@@ -773,6 +789,7 @@ fun ChatScreenPreview() {
     }
 }
 
+/**
 @Composable
 fun App() {
     Column(
@@ -797,7 +814,7 @@ fun App() {
     }
 }
 
-
+**/
 
 
 
