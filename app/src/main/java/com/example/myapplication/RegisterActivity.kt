@@ -1,5 +1,6 @@
 // Main activity for the sign up screen
 package com.example.myapplication
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -94,7 +95,13 @@ class RegisterActivity : ComponentActivity() {
 
             // Botón para registrarse
             Button(
-                onClick = { onSignUpClick() },
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, LoginActivity::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Registrarse")

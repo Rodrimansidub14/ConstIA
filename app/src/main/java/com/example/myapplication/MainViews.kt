@@ -309,7 +309,7 @@ fun SignUpViewPreview() {
     }
 }
 
-**/
+
 
 @Composable
 fun HomeScreen() {
@@ -401,7 +401,7 @@ fun HomeScreenPreview() {
         }
     }
 }
-
+**/
 
 @Composable
 fun FoodTracker() {

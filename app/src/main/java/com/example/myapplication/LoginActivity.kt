@@ -1,6 +1,7 @@
 // Main activity for the login screen
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -87,7 +88,13 @@ class LoginActivity : ComponentActivity() {
 
             // Botón para iniciar sesión
             Button(
-                onClick = { onLoginClick() },
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, HomeScreenActivity::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Iniciar sesión")

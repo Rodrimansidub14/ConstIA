@@ -1,7 +1,5 @@
-// MainActivity.kt
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,12 +8,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.text.TextStyle
-
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,26 +24,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
-class MainActivity : ComponentActivity() {
+
+class HomeScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-          GetStartedView(onLoginClick = {  }) {
-          }
+            HomeScreen()
+            }
         }
-    }
 
     @Composable
-    fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
-        // Obtener el contexto local
+    fun HomeScreen() {
         val context = LocalContext.current
-        // Identificador de recurso para la imagen del logo
         val imageResId = R.drawable.logoconstia
 
-        // Columna principal para la vista de inicio
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -57,69 +52,77 @@ class MainActivity : ComponentActivity() {
                 painter = painterResource(id = imageResId),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(350.dp)
+                    .size(200.dp)
                     .padding(8.dp)
             )
-
-            // Texto que muestra "Empecemos" con estilo de tipografía de MaterialTheme
-            val customTextStyle = TextStyle(
-                fontSize = 38.sp,
-            )
-
-            // uSA EL ESTILO CUSTOMIZADO
+            // Texto que pregunta "¿Qué necesitas hoy?" con estilo de tipografía de MaterialTheme
             Text(
-                text = "Empecemos",
-                style = customTextStyle,
-                modifier = Modifier.padding(vertical = 50.dp)
+                text = "¿Qué necesitas hoy?",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // Botón para iniciar sesión
+            // Botones para diferentes opciones
             Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, LoginActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
+                onClick = { /* Lógica para registrar comida */ },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Log In")
+                Text(text = "Registrar Comida")
             }
 
-
-            // Botón para registrarse
             Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, RegisterActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
+                onClick = { /* Lógica para chequeo emocional */ },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Sign Up")
+                Text(text = "Chequeo Emocional")
+            }
+
+            Button(
+                onClick = { /* Lógica para monitoreo de sueño */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(text = "Monitoreo de sueño")
+            }
+
+            Button(
+                onClick = { /* Lógica para registro de actividad */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(text = "Registro de Actividad")
+            }
+
+            Button(
+                onClick = { /* Lógica para chat */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(text = "Chat")
             }
         }
     }
-
 
     @Preview
     @Composable
-    fun GetStartedViewPreview() {
-
+    fun HomeScreenPreview() {
         MyApplicationTheme {
             Surface {
-                GetStartedView(
-                    onLoginClick = { /* manejo login click */ },
-                    onSignUpClick = { /* manejo sign up click */ })
+                // Vista previa de HomeScreen
+                HomeScreen()
             }
         }
     }
-}
-
+    }
