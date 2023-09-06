@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -104,7 +105,13 @@ class HomeScreenActivity : ComponentActivity() {
             }
 
             Button(
-                onClick = { /* Lógica para chat */ },
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, ChatActivity::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
