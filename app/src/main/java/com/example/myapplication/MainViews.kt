@@ -157,7 +157,7 @@ fun LoginView(onLoginClick: () -> Unit) {
             painter = painterResource(id = imageResId),
             contentDescription = null,
             modifier = Modifier
-                .size(500.dp)
+                .size(450.dp)
                 .padding(8.dp)
         )
 
@@ -229,7 +229,7 @@ fun SignUpView(onSignUpClick: () -> Unit) {
             painter = painterResource(id = imageResId),
             contentDescription = null,
             modifier = Modifier
-                .size(500.dp)
+                .size(450.dp)
                 .padding(8.dp)
         )
         // Texto que muestra "Registrarse" con estilo de tipografía de MaterialTheme
@@ -509,7 +509,7 @@ fun SleepTracker() {
             Text(
                 text = "Resumen de Sueño",
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier.padding(vertical = 30.dp)
             )
             // TODO: Mostrar detalles del resumen de sueño
 
@@ -519,7 +519,7 @@ fun SleepTracker() {
             Text(
                 text = "Registro de Sueño Anterior",
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier.padding(vertical = 30.dp)
             )
             // TODO: Mostrar elementos del registro de sueño de días anteriores
 
@@ -529,17 +529,17 @@ fun SleepTracker() {
             Text(
                 text = "Gráficos de Sueño",
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier.padding(vertical = 30.dp)
             )
             // TODO: Mostrar gráficos de sueño usando una biblioteca de gráficos o Compose graphics
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             // Recomendaciones de Sueño
             Text(
                 text = "Recomendaciones de Sueño",
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier.padding(vertical = 30.dp)
             )
             // TODO: Mostrar recomendaciones relacionadas con el sueño
         }
@@ -729,6 +729,8 @@ fun ChatScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
+                .background(color = Color(0xEDAE49))
+
         ) {
             Text(text = "Enviar")
         }
