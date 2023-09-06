@@ -153,7 +153,7 @@ fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
     }
 
 
-**/
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -227,6 +227,7 @@ fun LoginViewPreview() {
         }
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -308,6 +309,7 @@ fun SignUpViewPreview() {
     }
 }
 
+**/
 
 @Composable
 fun HomeScreen() {
