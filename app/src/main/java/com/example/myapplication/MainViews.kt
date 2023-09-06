@@ -713,11 +713,13 @@ fun ChatScreen() {
         // Espacio para escribir texto
         OutlinedTextField(
             value = "",
-            onValueChange = {},
+            onValueChange = {
+            },
             placeholder = { Text("Escribe tu mensaje aquí") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 8.dp)
+                .padding(vertical = 16.dp) // Aumenta el espacio vertical
+                .height(300.dp) // Establece la altura deseada
         )
 
         Spacer(modifier = Modifier.weight(1f)) // Empuja el contenido hacia arriba
