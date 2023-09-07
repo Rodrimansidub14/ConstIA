@@ -31,7 +31,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
-
+import androidx.compose.runtime.*
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 
 class ChatActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +48,8 @@ class ChatActivity : ComponentActivity() {
             ChatScreen()
         }
     }
+
+
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ChatScreen() {
@@ -63,19 +73,13 @@ class ChatActivity : ComponentActivity() {
             TextBubble("¿Qué recomendaciones buscas?")
 
             // Espacio para escribir texto
-            OutlinedTextField(
-                value = "",
-                onValueChange = {
-                },
-                placeholder = { Text("Escribe tu mensaje aquí") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp) // Aumenta el espacio vertical
-                    .height(300.dp) // Establece la altura deseada
-            )
+
+            TextEntryView()
+
 
             Spacer(modifier = Modifier.weight(1f)) // Empuja el contenido hacia arriba
             // Botón de enviar
+
             Button(
                 onClick = {},
                 modifier = Modifier
@@ -97,7 +101,23 @@ class ChatActivity : ComponentActivity() {
             )
         }
     }
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun TextEntryView() {
+        var textValue by remember { mutableStateOf(TextFieldValue()) }
 
+        OutlinedTextField(
+            value = textValue,
+            onValueChange = {
+                textValue = it
+            },
+            placeholder = { Text("Escribe tu mensaje aquí") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
+                .height(300.dp)
+        )
+    }
     @Composable
     fun TextBubble(message: String) {
         Box(
