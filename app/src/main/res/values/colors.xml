@@ -7,5 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="principal">#0A3D38</color>
+    <color name="secundary">#11998E</color>
+    <color name="action">#FF4567</color>
+    <color name="complemet">#C8E6C9</color>
+    <color name="backgroundcolorviews">#F4F4F4</color>
     <color name="paynes_gray">#536878</color>
+    
+
 </resources>
