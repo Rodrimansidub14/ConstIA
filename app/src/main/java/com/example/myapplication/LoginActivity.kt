@@ -1,4 +1,3 @@
-// Main activity for the login screen
 package com.example.myapplication
 
 import android.content.Intent
@@ -6,98 +5,121 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
-
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LoginView() {
+            MyApplicationTheme {
+                LoginView()
             }
         }
     }
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun LoginView(onLoginClick: () -> Unit) {
+    fun LoginView() {
         val context = LocalContext.current
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
+        val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
+        val secundaryColor = colorResource(id = R.color.secundary)
+        val principalColor = colorResource(id = R.color.principal)
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            // Mostrar la imagen del logo
-            Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = null,
+        Surface(color = backgroundColor, modifier = Modifier.fillMaxSize()) {
+            Column(
                 modifier = Modifier
-                    .size(350.dp)
-                    .padding(8.dp)
-            )
-
-            // Texto que muestra "Iniciar sesión" con estilo de tipografía de MaterialTheme
-            Text(
-                text = "Iniciar sesión",
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
-
-            // Campo de texto para el correo electrónico y contrasena llamando funciones
-            TextEntryEmail()
-            TextEntryPassword()
-
-            // Botón para iniciar sesión
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, HomeScreenActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier.fillMaxWidth()
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Iniciar sesión")
+                val text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = secundaryColor)) {
+                        append("Iniciar")
+                    }
+                    withStyle(style = SpanStyle(color = principalColor)) {
+                        append("Sesion")
+                    }
+                }
+
+                Text(
+                    text = text,
+                    style = TextStyle(
+                        fontSize = 40.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier.padding(8.dp)
+                )
+                Image(
+                    painter = painterResource(id = imageResId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        .padding(top = 24.dp, bottom = 16.dp)
+                )
+
+                TextEntry("Correo Electrónico")
+                TextEntry("Contraseña", true)
+
+                Button(
+                    onClick = {
+                        // Aquí irá la lógica para el inicio de sesión
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp, bottom = 24.dp)
+                ) {
+                    Text(text = "Iniciar Sesión")
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("¿Aún no tienes una cuenta?")
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = "Regístrate",
+                        color = principalColor,
+                        modifier = Modifier.clickable {
+                            val intent = Intent(context, RegisterActivity::class.java)
+                            context.startActivity(intent)
+                        }
+                    )
+                }
             }
         }
     }
 
-    /**
-     * Campo de texto para el correo electrónico
-     */
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun TextEntryEmail() {
+    fun TextEntry(hint: String, password: Boolean = false) {
         var textValue by remember { mutableStateOf(TextFieldValue()) }
 
         OutlinedTextField(
@@ -105,43 +127,21 @@ class LoginActivity : ComponentActivity() {
             onValueChange = {
                 textValue = it
             },
-            placeholder = { Text("Correo electronico:") },
+            placeholder = { Text(hint) },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
-                .height(60.dp)
+                .padding(vertical = 4.dp)
+                .height(60.dp),
+            visualTransformation = if (password) PasswordVisualTransformation() else VisualTransformation.None
         )
     }
 
-    /**
-     * Campo de texto para la contraseña
-     */
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun TextEntryPassword() {
-        var textValue by remember { mutableStateOf(TextFieldValue()) }
-
-        OutlinedTextField(
-            value = textValue,
-            onValueChange = {
-                textValue = it
-            },
-            placeholder = { Text("Contraseña:") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp)
-                .height(60.dp)
-        )
-    }
     @Preview
     @Composable
     fun LoginViewPreview() {
         MyApplicationTheme {
             Surface {
-                // Vista previa de LoginView
-                LoginView(
-                    onLoginClick = { /* Manejar clic en inicio de sesión */ }
-                )
+                LoginView()
             }
         }
     }

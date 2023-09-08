@@ -5,32 +5,48 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
+
+import androidx.compose.runtime.*
+
+
 
 
 class RegisterActivity : ComponentActivity() {
@@ -42,61 +58,90 @@ class RegisterActivity : ComponentActivity() {
             }
         }
     }
+
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun SignUpView(onSignUpClick: () -> Unit) {
         val context = LocalContext.current
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
+        val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
+        val secundaryColor = colorResource(id = R.color.secundary)
+        val principalColor = colorResource(id = R.color.principal)
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            // Mostrar la imagen del logo
-            Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = null,
+        Surface(color = backgroundColor, modifier = Modifier.fillMaxSize()) {
+            Column(
                 modifier = Modifier
-                    .size(350.dp)
-                    .padding(8.dp)
-            )
-            // Texto que muestra "Registrarse" con estilo de tipografía de MaterialTheme
-            Text(
-                text = "Registrarse",
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
-
-            // Campo de texto para el correo electrónico,contrasena y nombre de usuario llamando funciones
-            TextEntryName()
-            TextEntryEmail()
-            TextEntryPassword()
-
-            // Botón para registrarse
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, LoginActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier.fillMaxWidth()
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Registrarse")
+                val text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = secundaryColor)) {
+                        append("Regis")
+                    }
+                    withStyle(style = SpanStyle(color = principalColor)) {
+                        append("trarse")
+                    }
+                }
+
+                Text(
+                    text = text,
+                    style = TextStyle(
+                        fontSize = 40.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier.padding(8.dp)
+                )
+
+                Image(
+                    painter = painterResource(id = imageResId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        .padding(8.dp)
+                )
+
+                TextEntry("Nombre")
+                TextEntry("Apellido")
+                TextEntry("Correo Electrónico")
+                TextEntry("Contraseña", true)
+                TextEntry("Confirmación de Contraseña", true)
+
+                Button(
+                    onClick = {
+                        val intent = Intent(context, LoginActivity::class.java)
+                        context.startActivity(intent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp)
+                ) {
+                    Text(text = "Registrarse")
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("¿Ya tienes una cuenta?")
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = "Login",
+                        color = principalColor,
+                        modifier = Modifier.clickable {
+                            val intent = Intent(context, LoginActivity::class.java)
+                            context.startActivity(intent)
+                        }
+                    )
+                }
             }
         }
     }
 
-    /**
-     * Campo de texto para el correo electrónico
-     */
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun TextEntryEmail() {
+    fun TextEntry(hint: String, password: Boolean = false) {
         var textValue by remember { mutableStateOf(TextFieldValue()) }
 
         OutlinedTextField(
@@ -104,53 +149,12 @@ class RegisterActivity : ComponentActivity() {
             onValueChange = {
                 textValue = it
             },
-            placeholder = { Text("Correo electronico:") },
+            placeholder = { Text(hint) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
-                .height(60.dp)
-        )
-    }
-
-    /**
-     * Campo de texto para el nombre de usuario
-     */
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun TextEntryName() {
-        var textValue by remember { mutableStateOf(TextFieldValue()) }
-
-        OutlinedTextField(
-            value = textValue,
-            onValueChange = {
-                textValue = it
-            },
-            placeholder = { Text("Contraseña:") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .height(60.dp)
-        )
-    }
-
-    /**
-     * Campo de texto para la contraseña
-     */
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun TextEntryPassword() {
-        var textValue by remember { mutableStateOf(TextFieldValue()) }
-
-        OutlinedTextField(
-            value = textValue,
-            onValueChange = {
-                textValue = it
-            },
-            placeholder = { Text("Contraseña:") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .height(60.dp)
+                .height(60.dp),
+            visualTransformation = if (password) PasswordVisualTransformation() else VisualTransformation.None
         )
     }
 
@@ -159,7 +163,6 @@ class RegisterActivity : ComponentActivity() {
     fun SignUpViewPreview() {
         MyApplicationTheme {
             Surface {
-                // Vista previa de SignUpView
                 SignUpView(
                     onSignUpClick = { /* Manejar clic en registro */ }
                 )
@@ -167,3 +170,4 @@ class RegisterActivity : ComponentActivity() {
         }
     }
 }
+
