@@ -88,7 +88,7 @@ class LoginActivity : ComponentActivity() {
 
                 Button(
                     onClick = {
-                        val intent = Intent(context, RegisterActivity::class.java)
+                        val intent = Intent(context, HomeScreenActivity::class.java)
                         context.startActivity(intent)
                     },
                     modifier = Modifier
