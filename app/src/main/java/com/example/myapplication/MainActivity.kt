@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.ui.text.TextStyle
 
 import androidx.compose.material3.Surface
@@ -21,8 +21,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+
+import androidx.compose.ui.text.SpanStyle
+
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,93 +40,78 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-          GetStartedView(onLoginClick = {  }) {
-          }
+            GetStartedView(onLoginClick = {  }) {
+            }
         }
     }
 
     @Composable
     fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
-        // Obtener el contexto local
         val context = LocalContext.current
-        // Identificador de recurso para la imagen del logo
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
+        val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
+        val secundaryColor = colorResource(id = R.color.secundary)
+        val principalColor = colorResource(id = R.color.principal)
 
-        // Columna principal para la vista de inicio
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            // Mostrar la imagen del logo
-            Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = null,
+        Surface(color = backgroundColor, modifier = Modifier.fillMaxSize()) {
+            Column(
                 modifier = Modifier
-                    .size(350.dp)
-                    .padding(8.dp)
-            )
-
-            // Texto que muestra "Empecemos" con estilo de tipografía de MaterialTheme
-            val customTextStyle = TextStyle(
-                fontSize = 38.sp,
-            )
-
-            // uSA EL ESTILO CUSTOMIZADO
-            Text(
-                text = "Empecemos",
-                style = customTextStyle,
-                modifier = Modifier.padding(vertical = 50.dp)
-            )
-
-            // Botón para iniciar sesión
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, LoginActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp)
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Log In")
-            }
+                Image(
+                    painter = painterResource(id = imageResId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(350.dp)
+                        .padding(8.dp)
+                )
 
+                // Texto "ConstIA" con colores y estilos específicos
+                val text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = secundaryColor)) {
+                        append("Const")
+                    }
+                    withStyle(style = SpanStyle(color = principalColor)) {
+                        append("IA")
+                    }
+                }
 
-            // Botón para registrarse
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, RegisterActivity::class.java)
+                Text(
+                    text = text,
+                    style = TextStyle(
+                        fontSize = 40.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier.padding(8.dp)
+                )
 
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp)
-            ) {
-                Text(text = "Sign Up")
+                // Botón para empezar
+                Button(
+                    onClick = {
+                        val intent = Intent(context, LoginActivity::class.java)
+                        context.startActivity(intent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp)
+                ) {
+                    Text(text = "GET STARTED")
+                }
             }
         }
     }
 
-
     @Preview
     @Composable
     fun GetStartedViewPreview() {
-
         MyApplicationTheme {
-            Surface {
-                GetStartedView(
-                    onLoginClick = { /* manejo login click */ },
-                    onSignUpClick = { /* manejo sign up click */ })
-            }
+            GetStartedView(
+                onLoginClick = { /* manejo login click */ },
+                onSignUpClick = { /* manejo sign up click */ }
+            )
         }
     }
 }
