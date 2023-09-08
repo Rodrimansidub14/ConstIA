@@ -15,14 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.graphics.Color
-import androidx.compose.material3.Surface
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.res.colorResource
 
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -31,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,22 +42,7 @@ class MainActivity : ComponentActivity() {
         // Obtener el contexto local
         val context = LocalContext.current
         // Identificador de recurso para la imagen del logo
-        val imageResId = R.drawable.logofin
-
-        val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
-        val secundaryColor = colorResource(id = R.color.secundary)
-        val principalColor = colorResource(id = R.color.principal)
-
-        val text = buildAnnotatedString {
-            withStyle(style = SpanStyle(color = secundaryColor)) {
-                append("Const")
-            }
-            withStyle(style = SpanStyle(color = principalColor)) {
-                append("IA")
-            }
-        }
-
-        Surface(color = backgroundColor, modifier = Modifier.fillMaxSize()){
+        val imageResId = R.drawable.logoconstia
 
         // Columna principal para la vista de inicio
         Column(
@@ -74,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 .fillMaxSize()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween // Cambio aquí para distribuir espacio entre elementos
+            verticalArrangement = Arrangement.Center
         ) {
             // Mostrar la imagen del logo
             Image(
@@ -85,17 +61,19 @@ class MainActivity : ComponentActivity() {
                     .padding(8.dp)
             )
 
-            // Texto "ConstIA" con estilo grande
-            Text(
-                text = text,
-                style = TextStyle(
-                    fontSize = 40.sp, // tamaño grande para el texto
-                    fontWeight = FontWeight.Bold // estilo en molde
-                ),
-                modifier = Modifier.padding(8.dp)
+            // Texto que muestra "Empecemos" con estilo de tipografía de MaterialTheme
+            val customTextStyle = TextStyle(
+                fontSize = 38.sp,
             )
 
-            // Botón para empezar
+            // uSA EL ESTILO CUSTOMIZADO
+            Text(
+                text = "Empecemos",
+                style = customTextStyle,
+                modifier = Modifier.padding(vertical = 50.dp)
+            )
+
+            // Botón para iniciar sesión
             Button(
                 onClick = {
                     // Crear un Intent para iniciar la nueva actividad
@@ -106,11 +84,27 @@ class MainActivity : ComponentActivity() {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 18.dp)
+                    .padding(bottom = 8.dp)
             ) {
-                Text(text = "GET STARTED")
+                Text(text = "Log In")
             }
-        }
+
+
+            // Botón para registrarse
+            Button(
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, RegisterActivity::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(text = "Sign Up")
+            }
         }
     }
 
