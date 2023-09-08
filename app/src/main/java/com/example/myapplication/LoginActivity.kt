@@ -88,7 +88,8 @@ class LoginActivity : ComponentActivity() {
 
                 Button(
                     onClick = {
-                        // Aquí irá la lógica para el inicio de sesión
+                        val intent = Intent(context, RegisterActivity::class.java)
+                        context.startActivity(intent)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
