@@ -13,4 +13,6 @@
     <color name="complement">#C8E6C9</color>
     <color name="backgroundcolorviews">#F4F4F4</color>
     <color name="paynes_gray">#536878</color>
+    <color name="primary">#FF5722</color> <!-- Cambia el valor a tu color deseado -->
+
 </resources>
