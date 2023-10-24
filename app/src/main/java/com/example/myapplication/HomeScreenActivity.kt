@@ -107,7 +107,13 @@ class HomeScreenActivity : ComponentActivity() {
             }
 
             Button(
-                onClick = { /* Lógica para registro de actividad */ },
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, RegistroActividadActivity::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
