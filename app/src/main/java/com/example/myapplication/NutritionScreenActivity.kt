@@ -5,18 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,17 +18,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
-
-class HomeScreenActivity : ComponentActivity() {
+class NutritionScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HomeScreen()
-            }
+            NutritionScreen()
         }
+    }
 
     @Composable
-    fun HomeScreen() {
+    fun NutritionScreen() {
         val context = LocalContext.current
         val imageResId = R.drawable.logoconstia
 
@@ -48,7 +38,13 @@ class HomeScreenActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Mostrar la imagen del logo
+            // Texto con Tipografia
+            Text(
+                text = "NUTRICION",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
             Image(
                 painter = painterResource(id = imageResId),
                 contentDescription = null,
@@ -56,18 +52,12 @@ class HomeScreenActivity : ComponentActivity() {
                     .size(200.dp)
                     .padding(8.dp)
             )
-            // Texto que pregunta "¿Qué necesitas hoy?" con estilo de tipografía de MaterialTheme
-            Text(
-                text = "¿Qué necesitas hoy?",
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
 
-            // Botones para diferentes opciones
+            // Botón para Calculador de IMC
             Button(
                 onClick = {
                     // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, NutritionScreenActivity::class.java)
+                    val intent = Intent(context, IMCActivity::class.java)
 
                     // Iniciar la nueva actividad
                     context.startActivity(intent)
@@ -77,23 +67,25 @@ class HomeScreenActivity : ComponentActivity() {
                     .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Nutricion")
+                Text(text = "Calculador de IMC")
             }
 
+            // Botón para Dietas Recomendadas
             Button(
-                onClick = { /* Lógica para chequeo emocional */ },
+                onClick = { /* Lógica para Dietas Recomendadas */ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Chequeo Emocional")
+                Text(text = "Dietas Recomendadas")
             }
 
+            // Botón para Mi Perfil
             Button(
                 onClick = {
                     // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, SleepTrackerActivity::class.java)
+                    val intent = Intent(context, PerfilView::class.java)
 
                     // Iniciar la nueva actividad
                     context.startActivity(intent)
@@ -103,45 +95,16 @@ class HomeScreenActivity : ComponentActivity() {
                     .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Monitoreo de sueño")
-            }
-
-            Button(
-                onClick = { /* Lógica para registro de actividad */ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(bottom = 8.dp)
-            ) {
-                Text(text = "Registro de Actividad")
-            }
-
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, ChatActivity::class.java)
-
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(bottom = 8.dp)
-            ) {
-                Text(text = "Chat")
+                Text(text = "Mi Perfil")
             }
         }
     }
 
     @Preview
     @Composable
-    fun HomeScreenPreview() {
+    fun NutritionScreenPreview() {
         MyApplicationTheme {
-            Surface {
-                // Vista previa de HomeScreen
-                HomeScreen()
-            }
+            NutritionScreen()
         }
     }
-    }
+}
