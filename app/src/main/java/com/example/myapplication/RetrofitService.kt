@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-
+/*
 interface RetrofitService {
     @GET("/v1/food/fdcld?format=full&nutrients=203")
     suspend fun alimentosrecomendados(){
@@ -29,3 +29,4 @@ object RetrofitServiceFactory{
 
     }
 }
+ */
