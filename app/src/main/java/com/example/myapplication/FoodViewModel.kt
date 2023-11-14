@@ -24,7 +24,12 @@ class FoodViewModel : ViewModel() {
     fun searchFood() {
         viewModelScope.launch {
             try {
-                val query = searchQuery.value ?: return@launch
+                val query = searchQuery.value?.trim()
+                if (query.isNullOrBlank()) {
+                    Log.d("FoodViewModel", "Search query is empty")
+                    return@launch
+                }
+
                 val response = apiService.searchFoods(query)
                 if (response.count > 0) {
                     foodItems.postValue(response.products)
