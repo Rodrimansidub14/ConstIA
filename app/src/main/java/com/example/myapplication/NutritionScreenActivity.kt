@@ -80,7 +80,7 @@ class NutritionScreenActivity : ComponentActivity() {
                     .height(100.dp)
                     .padding(bottom = 8.dp)
             ) {
-                Text(text = "Dietas Recomendadas")
+                Text(text = "Valores nutricionales")
             }
 
             // Botón para Mi Perfil
