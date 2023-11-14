@@ -70,9 +70,11 @@ class NutritionScreenActivity : ComponentActivity() {
                 Text(text = "Calculador de IMC")
             }
 
-            // Botón para Dietas Recomendadas
+            // Botón para Valores nutricionales
             Button(
-                onClick = { /* Lógica para Dietas Recomendadas */ },
+                onClick = {
+                    val intent = Intent(context, FoodSearchActivity::class.java)
+                    startActivity(intent) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
