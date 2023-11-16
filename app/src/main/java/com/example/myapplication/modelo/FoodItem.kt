@@ -1,4 +1,5 @@
 package com.example.myapplication.modelo
+
 // Respuesta de la API
 data class ApiResponse(
     val count: Int,
