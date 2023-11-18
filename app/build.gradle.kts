@@ -60,6 +60,11 @@ android {
 }
 
 dependencies {
+
+    implementation ("com.google.android.gms:play-services-fitness:21.1.0")
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
+
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

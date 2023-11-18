@@ -213,4 +213,3 @@ fun calcularResultado(edad: Int, peso: Int, altura: Int, isMasculino: Boolean, a
 fun PreviewRegistroActividadScreen() {
     RegistroActividadScreen()
 }
-

@@ -25,30 +25,33 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"/>
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/principal"
-        android:hint="Nombre"
-        android:layout_marginVertical="8dp"/>
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Correo Electrónico"
-        android:background="@color/principal"
-        android:layout_marginVertical="8dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:textColor="@color/principal"
+                android:fontFamily="sans-serif-medium"
+                android:layout_height="wrap_content"
+                android:hint="Nombre" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/principal"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:layout_marginVertical="8dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:textColor="@color/principal"
+            android:fontFamily="sans-serif-medium"
+            android:layout_height="wrap_content"
+                android:hint="Correo Electrónico" />
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:textColor="@color/principal"
+            android:fontFamily="sans-serif-medium"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña" />
 
     <Button
         android:id="@+id/registro1"
@@ -57,6 +60,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/round_button_background"
+        android:textColor="@color/complement"
         android:text="Registrarse" />
 
     <LinearLayout
@@ -68,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/principal"
             android:text="¿Ya tienes una cuenta?"/>
 
         <Button
@@ -76,7 +80,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Inicia Sesión"
-            android:textColor="@color/principal"
+
+            android:background="@color/paynes_gray"
+            android:textColor="@color/complement"
             android:layout_marginStart="4dp"/>
     </LinearLayout>
 </LinearLayout>

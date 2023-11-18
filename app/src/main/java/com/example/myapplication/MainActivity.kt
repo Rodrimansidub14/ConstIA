@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 
 import androidx.compose.ui.text.TextStyle
 
@@ -49,9 +50,10 @@ class MainActivity : ComponentActivity() {
     fun GetStartedView(onLoginClick: () -> Unit, onSignUpClick: () -> Unit) {
         val context = LocalContext.current
         val imageResId = R.drawable.logofin
-        val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
+        var backgroundColor = colorResource(id = R.color.backgroundcolorviews)
         val secundaryColor = colorResource(id = R.color.secundary)
         val principalColor = colorResource(id = R.color.principal)
+        val complement = colorResource(id = R.color.complement)
 
         Surface(color = backgroundColor, modifier = Modifier.fillMaxSize()) {
             Column(
@@ -96,7 +98,10 @@ class MainActivity : ComponentActivity() {
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 18.dp)
+                        .padding(bottom = 16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = complement // Set the text color of the button
+                    )
                 ) {
                     Text(text = "GET STARTED")
                 }
