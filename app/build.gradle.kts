@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -64,7 +64,8 @@ dependencies {
     implementation ("com.google.android.gms:play-services-fitness:21.1.0")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
-
+    implementation ("androidx.compose.material:material-icons-core:1.5.4")
+    implementation ("androidx.compose.material:material-icons-extended:1.5.4")
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
