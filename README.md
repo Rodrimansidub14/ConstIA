@@ -55,10 +55,10 @@ sta API proporciona información detallada sobre diversos alimentos, incluyendo 
 - **Conexiones Soportadas:** Soporta conexiones SPDY, HTTP/2 y WebSockets.
 - **Herramientas:** También tiene herramientas para monitorear y visualizar el tráfico de red.
 
-## Video de funcionamiento:
+# Video de funcionamiento:
 - **URL**: [Video](https://youtu.be/3wQMxzxMcWo)
 
-Release Notes:
+# Release Notes:
   - **URL**: [Release](https://docs.google.com/document/d/1jgzFms5833zQI1KFTsM6zVMpSUYJKtQUegv6BkG4Eho/edit?usp=sharing)
 
 
