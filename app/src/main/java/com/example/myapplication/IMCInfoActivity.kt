@@ -34,7 +34,7 @@ class IMCInfoActivity : ComponentActivity() {
         val backgroundColor = colorResource(id = R.color.backgroundcolorviews)
         val secundaryColor = colorResource(id = R.color.secundary)
         val principalColor = colorResource(id = R.color.principal)
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
 
         Column(
             modifier = Modifier

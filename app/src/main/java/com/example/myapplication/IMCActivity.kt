@@ -37,7 +37,7 @@ class IMCActivity : ComponentActivity() {
     @Composable
     fun IMCScreen() {
         val context = LocalContext.current
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
 
         Column(
             modifier = Modifier

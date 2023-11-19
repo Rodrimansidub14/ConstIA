@@ -63,7 +63,7 @@ dependencies {
 
     implementation ("com.google.android.gms:play-services-fitness:21.1.0")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
-
+    implementation ("com.google.accompanist:accompanist-permissions:0.19.0")
     implementation ("androidx.compose.material:material-icons-core:1.5.4")
     implementation ("androidx.compose.material:material-icons-extended:1.5.4")
     // Import the Firebase BoM
@@ -88,6 +88,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
     val nav_version = "2.5.3"
     implementation ("androidx.navigation:navigation-compose:$nav_version")
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")

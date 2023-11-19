@@ -10,7 +10,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -81,13 +84,20 @@ class SleepTrackerActivity : ComponentActivity() {
             SleepTracker()
         }
     }
-
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun SleepTracker() {
-        // Get the ViewModel
         val viewModel: SleepTrackerViewModel = viewModel()
-
+        BoxWithConstraints {
+            if (maxWidth < 600.dp) {
+                ColumnLayout(viewModel = viewModel)
+            } else {
+                RowLayout(viewModel = viewModel)
+            }
+        }
+    }
+    @Composable
+    fun ColumnLayout(viewModel: SleepTrackerViewModel) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -95,13 +105,35 @@ class SleepTrackerActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Title and Record Sleep TextField
+            SleepTrackerContent(viewModel = viewModel)
+            // Logo at the bottom
+            Logo()
+        }
+    }
+    @Composable
+    fun RowLayout(viewModel: SleepTrackerViewModel) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
             Column(
                 modifier = Modifier
                     .weight(1f)
                     .padding(16.dp),
-                verticalArrangement = Arrangement.Top
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                SleepTrackerContent(viewModel = viewModel)
+            }
+            // Logo at the end of the row
+            Logo()
+        }
+    }
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun SleepTrackerContent(viewModel: SleepTrackerViewModel) {
+
                 Text(
                     text = "Registro de Sueño",
                     style = MaterialTheme.typography.headlineSmall,
@@ -119,6 +151,10 @@ class SleepTrackerActivity : ComponentActivity() {
 
                 Button(
                     onClick = { viewModel.saveSleepData() },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF19A89A),
+                        contentColor = Color.White
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp)
@@ -149,15 +185,10 @@ class SleepTrackerActivity : ComponentActivity() {
             }
 
             // Logo at the bottom
-            Image(
-                painter = painterResource(id = R.drawable.logoconstia),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(50.dp)
-                    .clickable { /* Handle logo click if needed */ }
-            )
+
         }
-    }
+
+
 
 
 
@@ -225,7 +256,7 @@ fun SleepTrackerPreview() {
             }
 
             Image(
-                painter = painterResource(id = R.drawable.logoconstia),
+                painter = painterResource(id = R.drawable.logofin),
                 contentDescription = null,
                 modifier = Modifier
                     .size(50.dp)
@@ -272,4 +303,14 @@ fun SleepTrackerPreview() {
             }
         )
     }
+
+@Composable
+fun Logo() {
+    Image(
+        painter = painterResource(id = R.drawable.logofin),
+        contentDescription = null,
+        modifier = Modifier
+            .size(50.dp)
+            .clickable { /* Handle logo click if needed */ }
+    )
 }
