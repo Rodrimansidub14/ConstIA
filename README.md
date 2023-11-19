@@ -36,43 +36,13 @@ Utilizando inteligencia artificial, ConstIA integra hábitos de sueño, energía
 - **URL**: [Firebase Authentication](https://firebase.google.com/products/auth)
 - **Rol**: Gestión de la autenticación de usuarios.
 - **Descripción**:Firebase Authentication se utilizará para gestionar el registro, inicio de sesión y autenticación de los usuarios en la aplicación, asegurando que solo los usuarios autorizados puedan acceder a ciertas funcionalidades.
-## USDA FoodData Central API 🍎
-- **URL**: [API Guide](https://fdc.nal.usda.gov/api-guide.html)
-- **Rol**: Proporcionar datos nutricionales y de alimentos.
-- **Descripción**: Esta API proporciona información detallada sobre diversos alimentos, incluyendo su contenido nutricional. Permitirá a los usuarios obtener datos precisos sobre los alimentos que consumen.
+sta API proporciona información detallada sobre diversos alimentos, incluyendo su contenido nutricional. Permitirá a los usuarios obtener datos precisos sobre los alimentos que consumen.
 
 ## Recipe Puppy API 🧑‍🍳
 - **URL**: [Recipe Puppy on RapidAPI](https://rapidapi.com/brianiswu/api/recipe-puppy)
 - **Rol**: Proporcionar recetas.
 - **Descripción**:La API de Recipe Puppy ofrecerá recetas basadas en los ingredientes proporcionados por los usuarios, facilitando la exploración de nuevas ideas de comidas.
 
-## Keen API 📈
-- **URL**: [Keen IO](https://keen.io)
-- **Rol**: Análisis de datos en tiempo real.
-- **Descripción**: Keen API se utilizará para rastrear, analizar y visualizar datos de eventos en tiempo real. Permitirá la recopilación de datos, almacenamiento seguro, análisis y visualización personalizada dentro de la aplicación.
-## Edamam API :
-- **URL**: [Edamam API](https://developer.edamam.com)
-- **Rol**: Proporcionar información relacionada con alimentos,recetas y alimentación
-- **Descripción**: La API de Edamam brindará acceso a una amplia base de datos de alimentos, recetas y datos nutricionales, permitiendo a los usuarios explorar y obtener información precisa y detallada en el ámbito de la alimentación.
-
-## Nutritionix API 🍏
-- **URL**: [Nutritionix for Developers](https://developer.nutritionix.com)
-- **Rol**: Proporcionar información nutricional de alimentos específicos.
-- **Descripción**: La API de Nutritionix facilitará la obtención de datos como calorías, macronutrientes y micronutrientes de diferentes alimentos, proporcionando información nutricional detallada a los usuarios.
-
-## Wger API 🏋️
-- **URL**: [Wger API Documentation](https://wger.de/en/software/api)
-- **Rol**: Proporcionar información sobre entrenamientos y dietas.
-- **Descripción**: La API de wger se utilizará para acceder a planes de entrenamiento, ejercicios y dietas, facilitando a los usuarios la gestión de sus rutinas de fitness y nutrición.
-
-## API de Llama2 (a través de MLC LLM)  🦙
-- **URL**: [MLC LLM GitHub Repository](https://github.com/mlc-ai/mlc-llm)
-- **Rol**: Facilitar la interacción usuario-aplicación mediante un chatbot.
-- **Descripción**:  Llama2, a través del proyecto MLC LLM, permitirá la implementación de un chatbot interactivo en la app para ayudar a los usuarios a navegar y obtener la información que necesitan de manera más eficiente.
-## Android Sleep API 🛌
-- **URL**: [Documentación de Android Sleep API]([https://developers.google.com/location-context/sleep-detection/sleep-api](https://developer.android.com/codelabs/android-sleep-api?hl=es-419#0))
-- **Rol**: Proporcionar información sobre los hábitos de sueño del usuario.
-- **Descripción**: La Android Sleep API es una biblioteca alimentada por Google Play Services que permite a las aplicaciones determinar cuándo el usuario se va a dormir y cuándo se despierta.
 
 # Bibliotecas y Herramientas 📚
 ## Retrofit 
@@ -84,6 +54,14 @@ Utilizando inteligencia artificial, ConstIA integra hábitos de sueño, energía
 
 - **Conexiones Soportadas:** Soporta conexiones SPDY, HTTP/2 y WebSockets.
 - **Herramientas:** También tiene herramientas para monitorear y visualizar el tráfico de red.
+
+## Video de funcionamiento:
+- **URL**: [Video](https://youtu.be/3wQMxzxMcWo)
+
+Release Notes:
+  - **URL**: [Release](https://docs.google.com/document/d/1jgzFms5833zQI1KFTsM6zVMpSUYJKtQUegv6BkG4Eho/edit?usp=sharing)
+
+
 ## Ktor Client
 - **Descripción:** es un framework Kotlin multiplataforma que puede usarse tanto para crear servidores web como para consumir APIs. Ktor Client es la parte del framework diseñada para realizar peticiones a servicios web. Es flexible y extensible.
 - **Flexibilidad:** Es flexible y extensible, diseñado para realizar peticiones a servicios web.
