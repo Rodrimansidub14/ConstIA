@@ -83,22 +83,8 @@ class NutritionScreenActivity : ComponentActivity() {
                 Text(text = "Valores nutricionales")
             }
 
-            // Botón para Mi Perfil
-            Button(
-                onClick = {
-                    // Crear un Intent para iniciar la nueva actividad
-                    val intent = Intent(context, PerfilView::class.java)
 
-                    // Iniciar la nueva actividad
-                    context.startActivity(intent)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(bottom = 8.dp)
-            ) {
-                Text(text = "Mi Perfil")
-            }
+
         }
     }
 

@@ -121,6 +121,22 @@ class HomeScreenActivity : ComponentActivity() {
             ) {
                 Text(text = "Registro de Actividad")
             }
+
+            Button(
+                onClick = {
+                    // Crear un Intent para iniciar la nueva actividad
+                    val intent = Intent(context, PerfilView::class.java)
+
+                    // Iniciar la nueva actividad
+                    context.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(text = "Ver Perfil")
+            }
         }
     }
 
