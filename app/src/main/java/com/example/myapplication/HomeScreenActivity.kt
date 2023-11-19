@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -21,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,7 +41,7 @@ class HomeScreenActivity : ComponentActivity() {
     @Composable
     fun HomeScreen() {
         val context = LocalContext.current
-        val imageResId = R.drawable.logoconstia
+        val imageResId = R.drawable.logofin
 
         Column(
             modifier = Modifier
@@ -75,7 +77,13 @@ class HomeScreenActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF19A89A),
+                    contentColor = Color.White
+                )
+
             ) {
                 Text(text = "Nutricion")
             }
@@ -85,7 +93,12 @@ class HomeScreenActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF19A89A),
+                    contentColor = Color.White
+                )
             ) {
                 Text(text = "Chequeo Emocional")
             }
@@ -101,7 +114,12 @@ class HomeScreenActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF19A89A),
+                    contentColor = Color.White
+                )
             ) {
                 Text(text = "Monitoreo de sueño")
             }
@@ -117,7 +135,12 @@ class HomeScreenActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF19A89A),
+                    contentColor = Color.White
+                )
             ) {
                 Text(text = "Registro de Actividad")
             }
@@ -133,7 +156,12 @@ class HomeScreenActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF19A89A),
+                    contentColor = Color.White
+                )
             ) {
                 Text(text = "Ver Perfil")
             }
